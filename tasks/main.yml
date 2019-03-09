@@ -1,0 +1,16 @@
+- name: copy relayd.conf
+  tags: openbsd-relayd
+  template:
+    src: "{{ openbsd_relayd_conf_src }}"
+    dest: "{{ openbsd_relayd_conf_dest}}"
+    mode: "0600"
+    owner: "root"
+    group: "wheel"
+    backup: "yes"
+  register: copy_relayd
+
+- name: test relayd
+  tags: openbsd-relayd
+  command: '"{{ openbsd_relayd_test_command }}" -nf {{ openbsd_relayd_conf_dest }}'
+  notify: restart relayd
+  when: copy_relayd.changed

@@ -1,0 +1,4 @@
+openbsd_relayd_conf_src: "relayd.conf.j2"
+openbsd_relayd_conf_dest: "/etc/relayd.conf"
+openbsd_relayd_test_command: "/sbin/relayd"
+openbsd_relayd_service_name: "relayd"

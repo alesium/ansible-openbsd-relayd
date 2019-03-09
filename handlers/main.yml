@@ -1,0 +1,10 @@
+- name: start and enable relayd
+  service:
+    name: "{{ openbsd_relayd_service_name }}"
+    state: started
+    enabled: true
+
+- name: restart relayd
+  service:
+    name: "{{ openbsd_relayd_service_name }}"
+    state: restarted
